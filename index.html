@@ -122,7 +122,7 @@
         }
     </style>
 </head>
-<body>
+<body class="dark-mode">
     <div class="toggle-container">
         <span class="toggle-label">Dark Mode</span>
         <input type="checkbox" id="toggle-dark-mode" checked>
@@ -193,7 +193,7 @@
                 if (parts.length === 2) return parts.pop().split(';').shift();
             }
 
-            const darkMode = getCookie('darkmode') === 'true';
+            const darkMode = getCookie('darkmode') !== 'false';
             toggle.checked = darkMode;
             applyDarkMode(darkMode);
 
