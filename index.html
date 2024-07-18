@@ -6,7 +6,7 @@
     <title>My Stuff - Pest</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -14,20 +14,33 @@
             margin: 0;
             background: url('background.gif') no-repeat center center fixed;
             background-size: cover;
-            transition: background-color 0.3s;
+            overflow: hidden;
         }
-        .card {
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 320px;
+            max-width: 100%;
+        }
+        .card, .settings {
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            width: 300px;
-            max-width: 100%;
             text-align: center;
+            margin-bottom: 20px;
             transition: background-color 0.3s, color 0.3s;
         }
         .card-header {
-            background: #6a11cb;
             background: linear-gradient(to right, #2575fc, #6a11cb);
             color: #fff;
             padding: 20px;
@@ -48,6 +61,7 @@
         .skill-name {
             font-size: 18px;
             margin-bottom: 5px;
+            font-weight: bold;
         }
         .skill-bar {
             position: relative;
@@ -86,16 +100,22 @@
         .links a:hover {
             text-decoration: underline;
         }
+        .settings {
+            padding: 20px;
+        }
+        .settings h2 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
         .toggle-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             display: flex;
             align-items: center;
+            justify-content: center;
         }
         .toggle-label {
             margin-right: 10px;
-            color: #fff;
+            color: #333;
+            font-size: 16px;
         }
         .dark-mode {
             --bg-color: #1e1e1e;
@@ -107,7 +127,7 @@
         .dark-mode body {
             background-color: var(--bg-color);
         }
-        .dark-mode .card {
+        .dark-mode .card, .dark-mode .settings {
             background-color: var(--card-bg-color);
             color: var(--text-color);
         }
@@ -120,55 +140,64 @@
         .dark-mode .links a:hover {
             color: var(--link-hover-color);
         }
+        .dark-mode .toggle-label {
+            color: var(--text-color);
+        }
     </style>
 </head>
 <body class="dark-mode">
-    <div class="toggle-container">
-        <span class="toggle-label">Dark Mode</span>
-        <input type="checkbox" id="toggle-dark-mode" checked>
-    </div>
-    <div class="card">
-        <div class="card-header">
-            <img src="profile.png" alt="Profile Icon">
-            <div>Pest</div>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <img src="profile.png" alt="Profile Icon">
+                <div>Pest</div>
+            </div>
+            <div class="card-body">
+                <div class="skill">
+                    <div class="skill-name">HTML</div>
+                    <div class="skill-bar">
+                        <div class="skill-level html"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">CSS</div>
+                    <div class="skill-bar">
+                        <div class="skill-level css"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">Lua (Roblox)</div>
+                    <div class="skill-bar">
+                        <div class="skill-level lua"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">C#</div>
+                    <div class="skill-bar">
+                        <div class="skill-level csharp"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <div class="skill-name">AI Code</div>
+                    <div class="skill-bar">
+                        <div class="skill-level ai"></div>
+                    </div>
+                </div>
+                <div class="about-me">
+                    yo, im Pest, I code (even when it hurts me.), especially in Lua for Roblox. I'm currently trying to learn about HTML, CSS. Honestly, What the sigma.
+                </div>
+                <div class="links">
+                    <a href="Eagler.html">Eaglercraft</a>
+                    <a href="https://en.pronouns.page/@pestt_" target="_blank">Pronouns Page</a>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <div class="skill">
-                <div class="skill-name">HTML</div>
-                <div class="skill-bar">
-                    <div class="skill-level html"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">CSS</div>
-                <div class="skill-bar">
-                    <div class="skill-level css"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">Lua (Roblox)</div>
-                <div class="skill-bar">
-                    <div class="skill-level lua"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">C#</div>
-                <div class="skill-bar">
-                    <div class="skill-level csharp"></div>
-                </div>
-            </div>
-            <div class="skill">
-                <div class="skill-name">AI Code</div>
-                <div class="skill-bar">
-                    <div class="skill-level ai"></div>
-                </div>
-            </div>
-            <div class="about-me">
-                yo, im Pest, I code (even when it hurts me.), especially in Lua for Roblox. I'm currently trying to learn about HTML, CSS. Honestly, What the sigma.
-            </div>
-            <div class="links">
-                <a href="Eaglercraft.html">Eaglercraft</a>
-                <a href="https://en.pronouns.page/@pestt_" target="_blank">Pronouns Page</a>
+        <div class="settings">
+            <h2>Settings</h2>
+            <div class="toggle-container">
+                <span class="toggle-label">Dark Mode</span>
+                <input type="checkbox" id="toggle-dark-mode" checked>
             </div>
         </div>
     </div>
