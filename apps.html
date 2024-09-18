@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Stuff - Pest</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 320px;
+            max-width: 100%;
+        }
+        .card, .settings {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .card-header {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            color: #fff;
+            padding: 20px;
+            font-size: 24px;
+        }
+        .card-header img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .skill {
+            margin: 15px 0;
+        }
+        .skill-name {
+            font-size: 18px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .skill-bar {
+            position: relative;
+            height: 10px;
+            border-radius: 5px;
+            background: #e0e0e0;
+            overflow: hidden;
+        }
+        .skill-level {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+        }
+        .skill-level.html { width: 2%; }
+        .skill-level.css { width: 5%; }
+        .skill-level.lua { width: 74%; }
+        .skill-level.csharp { width: 2%; }
+        .skill-level.ai { width: 28%; }
+        .about-me {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        .links {
+            margin-top: 20px;
+        }
+        .links a {
+            display: block;
+            margin: 5px 0;
+            color: #2575fc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .settings {
+            padding: 20px;
+        }
+        .settings h2 {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+        }
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .toggle-label {
+            margin-right: 10px;
+            color: #333;
+            font-size: 16px;
+        }
+        .dark-mode {
+            --bg-color: #1e1e1e;
+            --card-bg-color: #333;
+            --text-color: #eee;
+            --link-color: #78a1ff;
+            --link-hover-color: #a9c1ff;
+        }
+        .dark-mode .card, .dark-mode .settings {
+            background-color: var(--card-bg-color);
+            color: var(--text-color);
+        }
+        .dark-mode .about-me {
+            color: var(--text-color);
+        }
+        .dark-mode .links a {
+            color: var(--link-color);
+        }
+        .dark-mode .links a:hover {
+            color: var(--link-hover-color);
+        }
+        .dark-mode .toggle-label {
+            color: var(--text-color);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <div id="particles-js"></div>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <img src="profile.png" alt="Profile Icon">
+                <div>Pest</div>
+            </div>
+            <div class="card-body">
+                <div class="about-me">
+                    yo, im Pest, I code (even when it hurts me.), especially in Lua for Roblox. I'm currently trying to learn about HTML, CSS. Honestly, What the sigma.
+                </div>
+                <div class="links">
+                    <a href="Eaglercraft.html">Eaglercraft</a>
+                    <a href="discord.html">Discord App</a>
+                    <!-- <a href="https://en.pronouns.page/@pestt_" target="_blank">Pronouns Page</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#000000"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    },
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.getElementById('toggle-dark-mode');
+            const body = document.body;
+
+            function applyDarkMode(isDark) {
+                if (isDark) {
+                    body.classList.add('dark-mode');
+                    document.cookie = "darkmode=true; path=/";
+                } else {
+                    body.classList.remove('dark-mode');
+                    document.cookie = "darkmode=false; path=/";
+                }
+            }
+
+            function getCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+
+            const darkMode = getCookie('darkmode') !== 'false';
+            toggle.checked = darkMode;
+            applyDarkMode(darkMode);
+
+            toggle.addEventListener('change', function () {
+                applyDarkMode(toggle.checked);
+            });
+        });
+    </script>
+</body>
+</html>
