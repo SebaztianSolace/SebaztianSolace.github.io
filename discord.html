@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sebby's Discord</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .tabs {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+        .tab {
+            cursor: pointer;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .tab:hover {
+            background-color: #575757;
+        }
+        .iframe-container {
+            height: calc(100% - 40px); /* Adjust for tab height */
+            margin-top: 40px; /* Offset for the tabs */
+        }
+        iframe {
+            border: 0;
+            height: 100%;
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab" onclick="changePage('discord.html')">Discord</div>
+        <div class="tab" onclick="changePage('apps.html')">Apps</div> <!-- Change 'apps.html' to your desired URL -->
+    </div>
+    <div class="iframe-container">
+        <iframe id="contentFrame" src="https://e.widgetbot.io/channels/1285718535867465819/1285718536836218945" name="myiFrame" scrolling="no" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function changePage(page) {
+            document.getElementById('contentFrame').src = page;
+        }
+    </script>
+</body>
+</html>
