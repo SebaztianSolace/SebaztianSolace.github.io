@@ -7,53 +7,127 @@
     <style>
         html, body {
             height: 100%;
-            background: #000000;
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-        }
-        .tabs {
-            background-color: #333;
-            color: white;
+            background-color: #000;
+            overflow: hidden; /* Prevent scrolling */
             display: flex;
-            justify-content: space-around;
-            padding: 10px 0;
+        }
+        .sidebar {
+            background-color: #333;
+            color: #fff;
+            width: 200px; /* Width of the sidebar */
+            height: 100%;
             position: fixed;
-            width: 100%;
-            top: 0;
+            left: -200px; /* Hide sidebar off-screen */
+            transition: left 0.3s; /* Smooth transition */
+            z-index: 1; /* Ensure it appears above the iframe */
+            display: flex;
+            flex-direction: column; /* Stack tabs vertically */
+        }
+        .sidebar.active {
+            left: 0; /* Slide in */
+        }
+        .toggle-button {
+            cursor: pointer;
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            z-index: 2; /* Above the sidebar */
         }
         .tab {
             cursor: pointer;
-            padding: 10px 20px;
+            padding: 15px 20px;
             text-align: center;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underline from links */
+            color: #fff; /* Tab text color */
         }
         .tab:hover {
             background-color: #575757;
         }
         .iframe-container {
-            height: calc(100% - 40px); /* Adjust for tab height */
-            margin-top: 40px; /* Offset for the tabs */
+            margin-left: 0; /* Start without offset */
+            height: 100%; /* Full height */
+            width: 100%; /* Full width */
+            transition: margin-left 0.3s; /* Smooth transition */
+        }
+        .iframe-container.sidebar-active {
+            margin-left: 200px; /* Offset for sidebar when active */
         }
         iframe {
             border: 0;
-            height: 100%;
-            width: 100%;
+            height: 100vh; /* Full viewport height */
+            width: 100vw; /* Full viewport width */
             display: block;
+            position: absolute; /* Absolute positioning to keep it fixed */
+            top: 0;
+            left: 0;
+        }
+        .server-list {
+            display: none; /* Hide server list by default */
+            background-color: #444;
+            padding: 10px;
+            z-index: 1; /* Ensure it appears above the sidebar */
+            position: absolute; /* Position it relative to the sidebar */
+            top: 0; /* Align to the top of the sidebar */
+            left: 200px; /* Align next to the sidebar */
+            width: 200px; /* Width of the server list */
+        }
+        .server {
+            display: block;
+            color: #fff;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .server:hover {
+            background-color: #575757;
         }
     </style>
 </head>
 <body>
-    <div class="tabs">
-        <a class="tab" href="discord.html">Discord</a>
-        <a class="tab" href="apps.html">Apps</a> <!-- Change 'apps.html' to your desired URL -->
+    <button class="toggle-button" onclick="toggleSidebar()">☰</button>
+    <div class="sidebar" id="sidebar">
+        <a class="tab" href="#" onclick="changeFrame('https://e.widgetbot.io/channels/1285718535867465819/1285718536836218945')">Discord</a>
+        <a class="tab" href="#" onclick="changeFrame('apps.html')">Apps</a> <!-- Change 'apps.html' to your desired URL -->
+        <a class="tab" href="#" onclick="toggleServerList()">Servers</a>
     </div>
-    <div class="iframe-container">
-        <iframe id="contentFrame" src="https://e.widgetbot.io/channels/1285718535867465819/1285718536836218945" name="myiFrame" scrolling="no" allowfullscreen></iframe>
+    <div class="server-list" id="serverList">
+        <a class="server" href="#" onclick="changeFrame('https://e.widgetbot.io/channels/1285718535867465819/1285718536836218945')">Sebby's Discord</a>
+        <a class="server" href="#" onclick="changeFrame('https://e.widgetbot.io/channels/1100960138677997609/1100960138677997611')">PoweradeNetwork's Discord</a>
+        <a class="server" href="#" onclick="changeFrame('https://e.widgetbot.io/channels/904050432584863794/1146794917654429786')">SealCentral's Discord</a>
+        <!-- Add more servers as needed -->
+    </div>
+    <div class="iframe-container" id="iframeContainer">
+        <iframe id="contentFrame" 
+                src="https://e.widgetbot.io/channels/1285718535867465819/1285718536836218945" 
+                name="myiFrame" 
+                scrolling="no" 
+                allowfullscreen>
+        </iframe>
     </div>
 
     <script>
-        function changePage(page) {
-            document.getElementById('contentFrame').src = page;
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const iframeContainer = document.getElementById('iframeContainer');
+            sidebar.classList.toggle('active');
+            iframeContainer.classList.toggle('sidebar-active');
+        }
+
+        function toggleServerList() {
+            const serverList = document.getElementById('serverList');
+            serverList.style.display = serverList.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function changeFrame(url) {
+            document.getElementById('contentFrame').src = url;
+            toggleServerList(); // Close the server list after selection
         }
     </script>
 </body>
