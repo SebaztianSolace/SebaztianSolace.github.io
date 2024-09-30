@@ -94,14 +94,13 @@
     <button class="toggle-button" onclick="toggleSidebar()">☰</button>
     <div class="sidebar" id="sidebar">
         <a class="tab" href="#" onclick="changeFrame('https://e.widgetbot.io/channels/1285718535867465819/1285718536836218945')">Discord</a>
-        <a class="tab" href="#" onclick="changeFrame('apps.html')">Apps</a> <!-- Change 'apps.html' to your desired URL -->
+        <a class="tab" href="#" onclick="changeFrame('apps.html')">Apps</a>
         <a class="tab" href="#" onclick="toggleServerList()">Servers</a>
     </div>
     <div class="server-list" id="serverList">
         <a class="server" href="#" onclick="changeFrame('https://e.widgetbot.io/channels/1285718535867465819/1285718536836218945')">Sebby's Discord</a>
         <a class="server" href="#" onclick="changeFrame('https://e.widgetbot.io/channels/1100960138677997609/1100960138677997611')">PoweradeNetwork's Discord</a>
         <a class="server" href="#" onclick="changeFrame('https://e.widgetbot.io/channels/904050432584863794/1146794917654429786')">SealCentral's Discord</a>
-        <!-- Add more servers as needed -->
     </div>
     <div class="iframe-container" id="iframeContainer">
         <iframe id="contentFrame" 
@@ -113,6 +112,14 @@
     </div>
 
     <script>
+        // Prompt for code when the page loads
+        window.onload = function() {
+            const code = prompt("Enter the access code:");
+            if (code !== "Fn2") {
+                window.location.href = "https://www.google.com"; // Redirect to Google if incorrect
+            }
+        };
+
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const iframeContainer = document.getElementById('iframeContainer');
